@@ -25,15 +25,19 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Mention two parts of Express that you learned about this week.
+    Express JS is a framework that sits on node.js server.  It can be used for logging request or authorization.  Extensions methods added to the request and response objects.  ex.  respondse.redirect();
 
 - [ ] Describe Middleware?
+    functions taht extend express, used to add features to express.  there are 3 types: built in middleware, custom middleware, 3rd party middleware.
 
 - [ ] Describe a Resource?
+    everything is a resource, each resource is accessible via unique URI, resources have multiple representations.
 
 - [ ] What can the API return to help clients know if a request was successful?
+    A HTTP status code in 200s and whatever they were asking for..
 
 - [ ] How can we partition our application into sub-applications?
-
+    By splitting files and folders into a structure that is easier to manage and easier to read. By splitting files it helps keep our code clean.
 ## Project Setup
 
 Follow these steps to set up and work on your project:
