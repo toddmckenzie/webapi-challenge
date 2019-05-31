@@ -9,50 +9,50 @@ const actionDb = require('../helpers/actionModel.js');//question if this is righ
 
 router.get('/:id', (req, res) => {
     console.log(req.params.id)
-    projectDb
+    console.log(actionDb.get(req.params.id))
+    actionDb
     .get(req.params.id)
     .then(res => {
         res.status(200).json(res)
     })
     .catch(error => {
-        res.status(500).json({message: "internal server error"})
+        res.status(500).json({message: "internal server errors"})
     })
 })
 
 
 router.post('/', (req, res) => {
     const project = { name: req.body.name, description: req.body.description};
-    console.log(project)
-    projectDb
+    actionDb
     .insert(project)
     .then(result => {
         console.log(result)
         res.status(200).json(result)
     })
     .catch(error => {
-        res.status(500).json({message: "internal server error"})
+        res.status(500).json({message: "internal server errors"})
     })
 })
 
 
 router.put('/', (req,res) => {
 
-    projectDb
+    actionDb
     .update(req.params.id, req.body)
     .then(res => {
         res.status(200).json(res)
     })
     .catch(error => {
-        res.status(500).json({messge: "internal server error"})
+        res.status(500).json({messge: "internal server errors"})
     } )
 })
 
 router.delete('/:id', (req,res) => {
     
-    projectDb
+    actionDb
     .remove(req.params.id)
     .then(res => {
-        res.status(200).json({messge: "internal server error"})
+        res.status(200).json({messge: "internal server errors"})
     })
 })
 
