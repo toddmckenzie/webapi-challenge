@@ -9,8 +9,9 @@ const actionDb = require('../helpers/actionModel.js');//question if this is righ
 
 router.get('/:id', (req, res) => {
     console.log(req.params.id)
+    const id = req.params.id;
     projectDb
-    .get(req.params.id)
+    .get(id)
     .then(res => {
         res.status(200).json(res)
     })
@@ -19,7 +20,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-
+//working
 router.post('/', (req, res) => {
     const project = { name: req.body.name, description: req.body.description};
     console.log(project)
@@ -35,10 +36,10 @@ router.post('/', (req, res) => {
 })
 
 
-router.put('/', (req,res) => {
-
+router.put('/:id', (req,res) => {
+    const changes = {...req.body}
     projectDb
-    .update(req.params.id, req.body)
+    .update(req.params.id, changes)
     .then(res => {
         res.status(200).json(res)
     })
@@ -48,13 +49,28 @@ router.put('/', (req,res) => {
 })
 
 router.delete('/:id', (req,res) => {
-    
     projectDb
     .remove(req.params.id)
     .then(res => {
         res.status(200).json({messge: "internal server error"})
     })
+    .catch(error => {
+        res.status(500).json({message: "internal server error"})
+    })
 })
+
+// router.get('/:id', (req, res) => {
+//     console.log(req.params.id)
+//     projectDb
+//     .getProjectActions(req.params.id)
+//     .then(res => {
+//         res.status(200).json(res)
+//     })
+//     .catch(error => {
+//         res.status(500).json({message: "internal server error"})
+//     })
+// })
+
 
 
 module.exports = router;
