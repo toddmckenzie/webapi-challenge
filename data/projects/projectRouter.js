@@ -8,8 +8,9 @@ const actionDb = require('../helpers/actionModel.js');//question if this is righ
 
 
 router.get('/:id', (req, res) => {
+    console.log(req.params.id)
     projectDb
-    .get()
+    .get(req.params.id)
     .then(res => {
         res.status(200).json(res)
     })
@@ -20,7 +21,7 @@ router.get('/:id', (req, res) => {
 
 
 router.post('/', (req, res) => {
-    const project = { name: req.body.name, description: req.body.description},
+    const project = { name: req.body.name, description: req.body.description};
     projectDb
     .insert(project)
     .then(result => {
@@ -53,3 +54,6 @@ router.delete('/:id', (req,res) => {
         res.status(200).json({messge: "internal server error"})
     })
 })
+
+
+module.exports = router;
