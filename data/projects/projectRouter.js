@@ -56,7 +56,15 @@ router.delete('/:id', (req,res) => {
         res.status(500).json({message: "internal server error"})
     })
 })
-
+//working
+router.get('/', (req, res) => {
+    projectDb.get().then(response => {
+        res.json(response)
+    })
+    .catch(error => {
+        console.error(error)
+    })
+})
 
 
 
