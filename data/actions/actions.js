@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
         res.json(result)
     })
     .catch(error => {
+        console.error(error)
         res.status(500).json({message: "internal server errors"})
     })
 })
@@ -41,7 +42,7 @@ router.post('/', (req, res) => {
     })
     .catch(error => {
         console.error(error)
-        res.status(500).json({message: "internal server errors"})
+        res.status(500).json({message: "internal here server errors"})
     })
 })
 
